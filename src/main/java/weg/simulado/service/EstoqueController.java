@@ -22,18 +22,21 @@ public class EstoqueController {
             case 1 -> {
                 int optionRegister = interaction.chooseTypeRegister();
 
-                String code = interaction.registerCode();
-                String name = interaction.registerName();
-                int amount = interaction.registerAmount();
-                double price = interaction.registerPrice();
-
                 switch (optionRegister) {
                     case 1 -> {
+                        String code = interaction.registerCode();
+                        String name = interaction.registerName();
+                        int amount = interaction.registerAmount();
+                        double price = interaction.registerPrice();
                         double power = interaction.registerPower();
                         motorEletrico = new MotorEletrico(code, name, amount, price, power);
                         equipamentos.add(motorEletrico);
                     }
                     case 2 -> {
+                        String code = interaction.registerCode();
+                        String name = interaction.registerName();
+                        int amount = interaction.registerAmount();
+                        double price = interaction.registerPrice();
                         String voltage = interaction.registerVoltage();
                         painelControle = new PainelControle(code, name, amount, price, voltage);
                         equipamentos.add(painelControle);
@@ -45,7 +48,7 @@ public class EstoqueController {
                 int cont = 0;
                 for (Equipamento e : equipamentos) {
 
-                    if (equipamentos.isEmpty()){
+                    if (equipamentos.isEmpty()) {
                         interaction.emptyStock();
                     }
                     cont++;
@@ -127,6 +130,47 @@ public class EstoqueController {
                         }
                     }
                 }
+            }
+
+            case 7 -> {
+
+                int optionReport = interaction.chooseReport();
+
+                if (optionReport == 1) {
+                    int cont = 0;
+
+                    for (Equipamento e : equipamentos) {
+                        cont++;
+
+                    }
+                    int amount = equipamento.getQuantidade();
+
+                    interaction.informAmountEquipment(cont, amount);
+                }
+
+                else if (optionReport == 2){
+                    // Equipamento com maior preço.
+                    double maiorPreco = Integer.MIN_VALUE;
+
+                    for (Equipamento e : equipamentos){
+                        if (e.getQuantidade() > maiorPreco){
+                            maiorPreco = e.getQuantidade();
+                        }
+                        interaction.informMostValueEquipment(maiorPreco);
+                    }
+                }
+
+                else if (optionReport == 3){
+                    int maiorQuantidade = Integer.MIN_VALUE;
+
+                    for (Equipamento e : equipamentos){
+                        if (e.getQuantidade() > maiorQuantidade){
+                            maiorQuantidade = e.getQuantidade();
+                        }
+                        interaction.informMostAmountEquipment(maiorQuantidade);
+                    }
+                }
+
             }
         }
     }

@@ -38,7 +38,6 @@ public class Interaction {
     }
 
     public String registerCode(){
-        input.nextLine();
         System.out.print("Insira o Código do Equipamento: ");
         return input.nextLine();
     }
@@ -132,6 +131,30 @@ public class Interaction {
 
     public void emptyStock(){
         System.out.println("Estoque vazio!!!");
+    }
+
+    public void informAmountEquipment(int cont, int amount){
+        System.out.println("Há " + cont + " tipos de equipamentos e " + amount + " equipamentos totais");
+    }
+
+    public int chooseReport(){
+        System.out.println("|----------------------------------------------|");
+        System.out.println("|            Relátorio de Estoque              |");
+        System.out.println("|----------------------------------------------|");
+        System.out.println("| 1- Ver quantidade de Equipamentos            |");
+        System.out.println("| 2- Equipamento com Maior preço               |");
+        System.out.println("| 3- Equipamento com Maior quantidade          |");
+        System.out.println("| 4- Equipamento com Estoque baixo             |");
+        System.out.println("|----------------------------------------------|");
+        return HandleError.validateInt();
+    }
+
+    public void informMostValueEquipment (Double maiorPreco){
+        System.out.println("O Produto mais Valioso custa: " + maiorPreco);
+    }
+
+    public void informMostAmountEquipment (int maiorQuantidade){
+        System.out.println("O produto com maior quantidade em estoque tem " + maiorQuantidade);
     }
 
 
