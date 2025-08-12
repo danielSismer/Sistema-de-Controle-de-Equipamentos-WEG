@@ -8,11 +8,11 @@ public class Interaction {
 
     Scanner input;
 
-    public Interaction (){
+    public Interaction() {
         this.input = new Scanner(System.in);
     }
 
-    public int mainMenu(){
+    public int mainMenu() {
         System.out.println("|----------------------------------------------|");
         System.out.println("|         Bem vindo a WEG Control's            |");
         System.out.println("|----------------------------------------------|");
@@ -22,12 +22,15 @@ public class Interaction {
         System.out.println("| 4- Pesquisar por Código                      |");
         System.out.println("| 5- Remover por Código                        |");
         System.out.println("| 6- Movimentar Estoque                        |");
+        System.out.println("| 7- Relatórios de Estoque                     |");
+        System.out.println("| 8 - Busca Avançada por Nome                  |");
+        System.out.println("| 9 - Busca Avançada por Preço                 |");
         System.out.println("| 0- Sair                                      |");
         System.out.println("|----------------------------------------------|");
         return HandleError.validateInt();
     }
 
-    public int chooseTypeRegister(){
+    public int chooseTypeRegister() {
         System.out.println("|----------------------------------------------|");
         System.out.println("|            Cadastrar Equipamento             |");
         System.out.println("|----------------------------------------------|");
@@ -37,12 +40,12 @@ public class Interaction {
         return HandleError.validateInt();
     }
 
-    public String registerCode(){
+    public String registerCode() {
         System.out.print("Insira o Código do Equipamento: ");
         return input.nextLine();
     }
 
-    public String registerName(){
+    public String registerName() {
         System.out.print("Insira o Nome do Produto: ");
         return input.nextLine();
     }
@@ -52,54 +55,55 @@ public class Interaction {
         return HandleError.validateInt();
     }
 
-    public double registerPrice(){
+    public double registerPrice() {
         System.out.print("Insira o Preço do Equipamento ");
         return HandleError.validateDouble();
 
     }
 
-    public double registerPower(){
+    public double registerPower() {
         System.out.print("Insira a Potência do Equipamento: ");
         return HandleError.validateDouble();
 
     }
 
-    public String registerVoltage(){
+    public String registerVoltage() {
         input.nextLine();
         System.out.print("Insira a Tensão do Equipamento: ");
         return input.nextLine();
     }
 
-    public void ListEquipment(Equipamento p, int cont){
+    public void ListEquipment(Equipamento p, int cont) {
         System.out.println(cont + "- " + p);
     }
 
-    public int chooseTypeList(){
+    public int chooseTypeList() {
         System.out.println("|----------------------------------------------|");
         System.out.println("|            Listar Equipamento                |");
         System.out.println("|----------------------------------------------|");
         System.out.println("| 1- Motor Elétrico                            |");
         System.out.println("| 2- Painel de Controle                        |");
         System.out.println("|----------------------------------------------|");
-        return HandleError.validateInt();    }
+        return HandleError.validateInt();
+    }
 
-    public String searchByCode(){
+    public String searchByCode() {
         input.nextLine();
         System.out.println("Insira o Código do Equipamento: ");
         return input.nextLine();
     }
 
-    public void ListEquipment(Equipamento p){
+    public void ListEquipment(Equipamento p) {
         System.out.println(p);
     }
 
-    public String removeByCode(){
+    public String removeByCode() {
         input.nextLine();
         System.out.println("Insira o Código do Equipamento: ");
         return input.nextLine();
     }
 
-    public int chooseMovement(){
+    public int chooseMovement() {
         System.out.println("|----------------------------------------------|");
         System.out.println("|            Tipo de Movimentação              |");
         System.out.println("|----------------------------------------------|");
@@ -109,35 +113,35 @@ public class Interaction {
         return HandleError.validateInt();
     }
 
-    public String insertCode(){
+    public String insertCode() {
         input.nextLine();
         System.out.print("Insira o Còdigo do Equipamento: ");
         return input.nextLine();
     }
 
-    public int amountInsert(){
+    public int amountInsert() {
         System.out.print("Insira a Quantidade que Deseja adicionar ");
         return HandleError.validateInt();
     }
 
-    public int amountDelete(){
+    public int amountDelete() {
         System.out.print("Insira a Quantidade que Deseja remover ");
         return HandleError.validateInt();
     }
 
-    public void invalidAction(){
+    public void invalidAction() {
         System.out.println("Ação não permitida. O estoque não pode ficar negativo!!!");
     }
 
-    public void emptyStock(){
+    public void emptyStock() {
         System.out.println("Estoque vazio!!!");
     }
 
-    public void informAmountEquipment(int cont, int amount){
+    public void informAmountEquipment(int cont, int amount) {
         System.out.println("Há " + cont + " tipos de equipamentos e " + amount + " equipamentos totais");
     }
 
-    public int chooseReport(){
+    public int chooseReport() {
         System.out.println("|----------------------------------------------|");
         System.out.println("|            Relátorio de Estoque              |");
         System.out.println("|----------------------------------------------|");
@@ -149,13 +153,48 @@ public class Interaction {
         return HandleError.validateInt();
     }
 
-    public void informMostValueEquipment (Double maiorPreco){
+    public void informMostValueEquipment(Double maiorPreco) {
         System.out.println("O Produto mais Valioso custa: " + maiorPreco);
     }
 
-    public void informMostAmountEquipment (int maiorQuantidade){
+    public void informMostAmountEquipment(int maiorQuantidade) {
         System.out.println("O produto com maior quantidade em estoque tem " + maiorQuantidade);
     }
 
+    public void informLowAmount() {
+        System.out.println("|----------------------------------------------|");
+        System.out.println("|            Controle de Estoque               |");
+        System.out.println("|----------------------------------------------|");
+    }
+
+    public void stockSafe() {
+        System.out.println("Estoque controlado. Não há perigo de falta de equipamento!!!");
+    }
+
+    public String nameToSearch() {
+        System.out.println("|----------------------------------------------|");
+        System.out.println("|        Pesquisa por Nome Avançada            |");
+        System.out.println("|----------------------------------------------|");
+        System.out.println(" Insira o Nome:                            ");
+        return input.nextLine();
+
+    }
+
+    public void listNameEquipment(Equipamento e, int cont) {
+        System.out.println(cont + "- " + e.getNome());
+    }
+
+    public void equipmentNotFound(){
+        System.out.println("Equipamento não encontrado!!!");
+    }
+
+    public double priceToSearch() {
+        System.out.println("|----------------------------------------------|");
+        System.out.println("|        Pesquisa por Preço Avançada          |");
+        System.out.println("|----------------------------------------------|");
+        System.out.println(" Insira o Código:                            ");
+        return HandleError.validateDouble();
+
+    }
 
 }

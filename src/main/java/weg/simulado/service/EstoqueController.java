@@ -91,12 +91,8 @@ public class EstoqueController {
             }
 
             case 5 -> {
-                String code = interaction.removeByCode();
-                for (int cont = 0; cont < equipamentos.size(); cont++) {
-                    if (code.equalsIgnoreCase(equipamentos.get(cont).getCodigo())) {
-                        equipamentos.remove(cont);
-                    }
-                }
+                    String code = interaction.removeByCode();
+                    equipamentos.removeIf(e -> code.equalsIgnoreCase(e.getCodigo()));
             }
 
             case 6 -> {
@@ -149,7 +145,6 @@ public class EstoqueController {
                 }
 
                 else if (optionReport == 2){
-                    // Equipamento com maior preço.
                     double maiorPreco = Integer.MIN_VALUE;
 
                     for (Equipamento e : equipamentos){
@@ -170,6 +165,57 @@ public class EstoqueController {
                         interaction.informMostAmountEquipment(maiorQuantidade);
                     }
                 }
+
+                else if (optionReport == 4){
+
+                    interaction.informLowAmount();
+
+                    int cont = 0;
+                    for (Equipamento e : equipamentos){
+                        if(e.getQuantidade() < 5 ){
+                            cont++;
+                            interaction.ListEquipment(e, cont);
+                        }
+                        else {
+                            interaction.stockSafe();
+                        }
+                    }
+                }
+
+            }
+
+            case 8 ->{
+                String advancedSearchByName = interaction.nameToSearch();
+                int cont = 0;
+                for (Equipamento e : equipamentos){
+                    if (e.getNome().toLowerCase().contains(advancedSearchByName.toLowerCase())) {
+                        cont++;
+                        interaction.listNameEquipment(e, cont);
+                    } else {
+                        interaction.equipmentNotFound();
+                    }
+                }
+            }
+
+            case 9->{
+                double advancedSearchByPrice = interaction.priceToSearch();
+
+                int cont = 0;
+                for (Equipamento e : equipamentos){
+                    if (e.getPreco() > advancedSearchByPrice) {
+                        cont++;
+                        interaction.listNameEquipment(e, cont);
+                    } else {
+                        interaction.equipmentNotFound();
+                    }
+                }
+            }
+
+            case 0->{
+                System.exit(1000);
+            }
+
+            default->{
 
             }
         }
