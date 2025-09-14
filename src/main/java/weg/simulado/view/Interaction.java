@@ -1,8 +1,8 @@
 package weg.simulado.view;
 
-import weg.simulado.model.Equipamento;
-
 import java.util.Scanner;
+
+import weg.simulado.model.Equipamento;
 
 public class Interaction {
 
@@ -58,13 +58,11 @@ public class Interaction {
     public double registerPrice() {
         System.out.print("Insira o Preço do Equipamento ");
         return HandleError.validateDouble();
-
     }
 
     public double registerPower() {
         System.out.print("Insira a Potência do Equipamento: ");
         return HandleError.validateDouble();
-
     }
 
     public String registerVoltage() {
@@ -115,7 +113,7 @@ public class Interaction {
 
     public String insertCode() {
         input.nextLine();
-        System.out.print("Insira o Còdigo do Equipamento: ");
+        System.out.print("Insira o Código do Equipamento: ");
         return input.nextLine();
     }
 
@@ -143,7 +141,7 @@ public class Interaction {
 
     public int chooseReport() {
         System.out.println("|----------------------------------------------|");
-        System.out.println("|            Relátorio de Estoque              |");
+        System.out.println("|            Relatório de Estoque              |");
         System.out.println("|----------------------------------------------|");
         System.out.println("| 1- Ver quantidade de Equipamentos            |");
         System.out.println("| 2- Equipamento com Maior preço               |");
@@ -177,14 +175,13 @@ public class Interaction {
         System.out.println("|----------------------------------------------|");
         System.out.println(" Insira o Nome:                            ");
         return input.nextLine();
-
     }
 
     public void listNameEquipment(Equipamento e, int cont) {
         System.out.println(cont + "- " + e.getNome());
     }
 
-    public void equipmentNotFound(){
+    public void equipmentNotFound() {
         System.out.println("Equipamento não encontrado!!!");
     }
 
@@ -192,9 +189,7 @@ public class Interaction {
         System.out.println("|----------------------------------------------|");
         System.out.println("|        Pesquisa por Preço Avançada          |");
         System.out.println("|----------------------------------------------|");
-        System.out.println(" Insira o Código:                            ");
+        System.out.println(" Insira o Preço:                            ");
         return HandleError.validateDouble();
-
     }
-
 }

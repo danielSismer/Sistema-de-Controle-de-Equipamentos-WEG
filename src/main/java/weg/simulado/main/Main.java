@@ -9,7 +9,6 @@ import weg.simulado.view.Interaction;
 public class Main {
 
     public static void main(String[] args) {
-
         Equipamento equipamento = new Equipamento();
         MotorEletrico motorEletrico = new MotorEletrico();
         PainelControle painelControle = new PainelControle();
@@ -19,8 +18,6 @@ public class Main {
         while (true) {
             int option = interaction.mainMenu();
             estoqueController.mainController(option, equipamento, motorEletrico, painelControle, interaction);
-
         }
-
     }
 }
